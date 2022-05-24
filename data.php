@@ -5,14 +5,7 @@
      $search_url = "https://nominatim.openstreetmap.org/search?q=".$address[0]."&format=json"; 
        $latLong = getOSMLatLong($search_url);
        echo json_encode($latLong);
-  } 
-
-  if(isset($_POST['map_address'])) 
-  { 
-     $address = explode(',',$_POST['map_address']);
-        $latLong = getMapLatLong($address);
-       echo json_encode($latLong);
-  } 
+  }  
 
 function getOSMLatLong($search_url){
    $httpOptions = [
@@ -36,6 +29,12 @@ function getOSMLatLong($search_url){
      
 }
 
+ if(isset($_POST['map_address'])) 
+  { 
+     $address = explode(',',$_POST['map_address']);
+        $latLong = getMapLatLong($address);
+       echo json_encode($latLong);
+  } 
 function getMapLatLong($address){
     if(!empty($address)){
        //Formatted address
